@@ -28,7 +28,7 @@ public class ProjectileReflectionEmitterUnityNative : MonoBehaviour
         
     //}
 
-    void OnDrawGizmos()
+    /*void OnDrawGizmos()
     {
         Handles.color = Color.red;
         Handles.ArrowHandleCap(0, this.transform.position + this.transform.forward * 0.25f, this.transform.rotation, 0.5f, EventType.Repaint);
@@ -39,7 +39,7 @@ public class ProjectileReflectionEmitterUnityNative : MonoBehaviour
 
         //for (int i = 0; i < 20; i++)
         //    obpos[i].transform.position = this.transform.position + this.transform.forward * 0.75f;
-    }
+    }*/
 
     private void DrawPredictedReflectionPattern(Vector3 position, Vector3 direction, int reflectionsRemaining)
     {

@@ -1,0 +1,5 @@
+Classic Mode:-
+BackGround ki Resolution 480x480 honi chahiye aapki 1080x1920 hy
+bubble ki resolution 65x65 honi chahiye aapki 1080x1920 hy
+aapki sb images ki resolution 1080 1920 hy , jo mai ny ui bheji thi usky mutabiq resolution rkhni thi,
+ye saari ui kesi kaam ki ni.buttons bhe cut huay hain... 

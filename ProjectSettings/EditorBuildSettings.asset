@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Scene.unity
+    path: Assets/Akash/LevelsMode.unity
     guid: 2e97e6f8cf277cf4cabcea20c73d4c0c
   - enabled: 1
-    path: Assets/GameScene.unity
+    path: Assets/Akash/ClassicMode.unity
     guid: a52e2890016373f4aa80886f750bb33a
   m_configObjects: {}
