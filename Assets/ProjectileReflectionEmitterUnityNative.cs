@@ -25,16 +25,16 @@ public class ProjectileReflectionEmitterUnityNative : MonoBehaviour
     //    obpos = new GameObject[20];
     //    for (int i=0; i<20; i++)        
     //        obpos[i] = Instantiate(prefab);
-        
+
     //}
 
-    /*void OnDrawGizmos()
+   /* void OnDrawGizmos()
     {
         Handles.color = Color.red;
         Handles.ArrowHandleCap(0, this.transform.position + this.transform.forward * 0.25f, this.transform.rotation, 0.5f, EventType.Repaint);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, 0.25f);
-        
+
         DrawPredictedReflectionPattern(this.transform.position + this.transform.forward * 0.75f, this.transform.forward, maxReflectionCount);
 
         //for (int i = 0; i < 20; i++)
