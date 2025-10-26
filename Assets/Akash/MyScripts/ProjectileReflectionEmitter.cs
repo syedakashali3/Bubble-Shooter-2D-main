@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -16,7 +16,6 @@ public class ProjectileReflectionEmitter : MonoBehaviour
 
     private void Awake()
     {
-        // Ensure LineRenderer exists
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.startColor = lineColor;
@@ -43,9 +42,18 @@ public class ProjectileReflectionEmitter : MonoBehaviour
         for (int i = 0; i < maxReflectionCount; i++)
         {
             Ray ray = new Ray(position, direction);
+
             if (Physics.Raycast(ray, out RaycastHit hit, maxStepDistance))
             {
                 points.Add(hit.point);
+
+                // ✅ Stop drawing if hit object tagged "bubble"
+                if (hit.collider.CompareTag("bubble"))
+                {
+                    break;
+                }
+
+                // Reflect the direction and continue
                 direction = Vector3.Reflect(direction, hit.normal);
                 position = hit.point;
             }
@@ -64,7 +72,6 @@ public class ProjectileReflectionEmitter : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        // Optional: editor preview in scene view
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 0.15f);
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * 0.5f);

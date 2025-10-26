@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagmenet;
+//using UnityEngine.SceneManagmenet;
 
 
 public class GameManager : MonoBehaviour {
@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
     {
         if (MySceneLoader.instance)
         {
-            MySceneLoader.instance.LoadScene("ClassicMode")
+            MySceneLoader.instance.LoadScene("ClassicMode");
         }
         else
         {

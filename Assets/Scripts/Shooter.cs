@@ -35,8 +35,33 @@ public class Shooter : MonoBehaviour
             lineRenderer = gameObject.AddComponent<LineRenderer>();
 
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startColor = lineColor;
-        lineRenderer.endColor = lineColor;
+        /*        lineRenderer.startColor = lineColor;
+                lineRenderer.endColor = lineColor;*/
+        // Create a rainbow gradient for the line
+        Gradient rainbow = new Gradient();
+        GradientColorKey[] colorKeys = new GradientColorKey[7];
+        GradientAlphaKey[] alphaKeys = new GradientAlphaKey[2];
+
+        // Define rainbow colors
+        colorKeys[0].color = Color.red;
+        colorKeys[1].color = new Color(1f, 0.5f, 0f); // orange
+        colorKeys[2].color = Color.yellow;
+        colorKeys[3].color = Color.green;
+        colorKeys[4].color = Color.cyan;
+        colorKeys[5].color = Color.blue;
+        colorKeys[6].color = new Color(0.5f, 0f, 1f); // violet
+
+        // Set times evenly across the gradient
+        for (int i = 0; i < colorKeys.Length; i++)
+            colorKeys[i].time = i / (float)(colorKeys.Length - 1);
+
+        // Full opacity across the line
+        alphaKeys[0].alpha = 1f; alphaKeys[0].time = 0f;
+        alphaKeys[1].alpha = 1f; alphaKeys[1].time = 1f;
+
+        // Apply the gradient
+        rainbow.SetKeys(colorKeys, alphaKeys);
+        lineRenderer.colorGradient = rainbow;
         lineRenderer.startWidth = lineWidth;
         lineRenderer.endWidth = lineWidth;
         lineRenderer.positionCount = 0;
@@ -70,7 +95,16 @@ public class Shooter : MonoBehaviour
         {
             lineRenderer.enabled = false;
         }
-
+        if (lineRenderer.enabled)
+        {
+            float offset = Mathf.PingPong(Time.time * 0.2f, 1f);
+            Gradient rainbow = lineRenderer.colorGradient;
+            GradientColorKey[] colorKeys = rainbow.colorKeys;
+            for (int i = 0; i < colorKeys.Length; i++)
+                colorKeys[i].time = Mathf.Repeat((i / (float)(colorKeys.Length - 1)) + offset, 1f);
+            rainbow.SetKeys(colorKeys, rainbow.alphaKeys);
+            lineRenderer.colorGradient = rainbow;
+        }
         // On release, shoot the bubble
         if (canShoot && Input.GetMouseButtonUp(0)
             && Camera.main.ScreenToWorldPoint(Input.mousePosition).y > bottomShootPoint.transform.position.y
