@@ -13,7 +13,7 @@ public class CurrencyUi : MonoBehaviour {
 	void OnEnable()
 	{
 		CurrencyManager.coinsChangedEvent += UpdateCoinsUi;
-		//CurrencyManager.gemsChangedEvent += UpdateGemsUi;
+		CurrencyManager.gemsChangedEvent += UpdateGemsUi;
 	}
 
 	void Start()
@@ -21,7 +21,7 @@ public class CurrencyUi : MonoBehaviour {
 		if (!_updatedOnce)
 		{
 			UpdateCoinsUi(CurrencyManager.instance._coinsPref);
-			//UpdateGemsUi(CurrencyManager.instance._gemsPref);
+			UpdateGemsUi(CurrencyManager.instance._gemsPref);
 
 
 		}
@@ -30,7 +30,7 @@ public class CurrencyUi : MonoBehaviour {
 	void OnDisable()
 	{
 		CurrencyManager.coinsChangedEvent -= UpdateCoinsUi;
-		//CurrencyManager.gemsChangedEvent -= UpdateGemsUi;
+		CurrencyManager.gemsChangedEvent -= UpdateGemsUi;
 	}
 
 	void UpdateCoinsUi(string _currencyName)
@@ -43,14 +43,14 @@ public class CurrencyUi : MonoBehaviour {
 		Debug.Log(_value);
 	}
 
-	//void UpdateGemsUi(string _currencyName)
-	//{
-	//	if (!_gemsText)
-	//		return;
+	void UpdateGemsUi(string _currencyName)
+	{
+		if (!_gemsText)
+			return;
 
-	//	int _value = PlayerPrefs.GetInt(_currencyName, 0);
-	//	_gemsText.text = "" + _value;
-	//	_updatedOnce = true;
-	//	Debug.Log(_value);
-	//}
+		int _value = PlayerPrefs.GetInt(_currencyName, 0);
+		_gemsText.text = "" + _value;
+		_updatedOnce = true;
+		Debug.Log(_value);
+	}
 }
