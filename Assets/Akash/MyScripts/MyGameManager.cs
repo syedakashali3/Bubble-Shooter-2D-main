@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MyGameManager : MonoBehaviour
 {
+    public static MyGameManager instance;
     public PanelActivator panelActivator;
     public CoinCollectEffect coinCollectEffect;
     public CoinCollectEffect gemsCollectEffect;
@@ -14,7 +15,11 @@ public class MyGameManager : MonoBehaviour
 
     private const string StarsKeyPrefix = "StarsParent_";
     private const string ProgressKey = "ProgressFill";
-
+    private void Awake()
+    {
+        
+        instance = this;
+    }
     private void Start()
     {
         loadEnableStarsFillParent();

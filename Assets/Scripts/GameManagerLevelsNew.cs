@@ -170,6 +170,12 @@ public class GameManagerLevelsNew : MonoBehaviour
 			winScore.GetComponent<Text>().text = man.GetScore().ToString();
 			winThrows.GetComponent<Text>().text = man.GetThrows().ToString();
 			WinMenu.SetActive(true);
+			if (MyGameManager.instance != null)
+			{
+
+				MyGameManager.instance.doProgressFillBar(0.05f);
+                MyGameManager.instance.EnablestarsFillParent();
+            }
 			Debug.Log("level cleard");
 		}
 		else
