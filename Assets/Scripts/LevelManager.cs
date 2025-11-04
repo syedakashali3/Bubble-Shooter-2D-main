@@ -72,6 +72,7 @@ public class LevelManager : MonoBehaviour
 			level = 0;
 
 		currentLevel = level;
+		Debug.Log("Current Level =" + currentLevel);
 		levelText.GetComponent<UnityEngine.UI.Text>().text = "Level " + (level + 1);
 		StartCoroutine(LoadLevel(level));
 	}

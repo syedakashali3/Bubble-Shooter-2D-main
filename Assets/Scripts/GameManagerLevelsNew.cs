@@ -170,6 +170,7 @@ public class GameManagerLevelsNew : MonoBehaviour
 			winScore.GetComponent<Text>().text = man.GetScore().ToString();
 			winThrows.GetComponent<Text>().text = man.GetThrows().ToString();
 			WinMenu.SetActive(true);
+			Debug.Log("level cleard");
 		}
 		else
 		{
